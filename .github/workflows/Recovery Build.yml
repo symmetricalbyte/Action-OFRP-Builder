@@ -112,6 +112,7 @@ jobs:
         export ALLOW_MISSING_DEPENDENCIES=true
         export OF_MAINTAINER="symmetricalbyte"
         export OF_MAINTAINER_AVATAR="/tmp/avatar/png"
+        export OF_DEFAULT_KEYMASTER_VERSION=4.1
         set -e
         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng && make clean && mka adbd ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
