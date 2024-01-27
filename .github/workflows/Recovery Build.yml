@@ -107,8 +107,11 @@ jobs:
       run: |
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         set +e
+        wget "https://transfer.sh/get/Fte7rLHeiB/img_1_1706359649707.png" -O /tmp/avatar.png
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
+        export OF_MAINTAINER="symmetricalbyte"
+        export OF_MAINTAINER_AVATAR="/tmp/avatar/png"
         set -e
         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng && make clean && mka adbd ${{ github.event.inputs.BUILD_TARGET }}image -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
